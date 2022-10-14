@@ -3,8 +3,8 @@ import glob
 import numpy as np
 def cropImg(path):
     count = 0
-    afterPath = "afterPath\\"
-    for img in glob.glob(path+"\\*.png"):
+    afterPath = "afterPath/"
+    for img in glob.glob(path+"/*.png"):
         print(img)
         image = cv2.imread(img)
         img_gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
@@ -26,14 +26,14 @@ def cropImg(path):
 
 def partImg(path):
     count = 0
-    afterPath = "newImg\\"
-    for img in glob.glob(path+"\\*.png"):
+    afterPath = "newImg/"
+    for img in glob.glob(path+"/*.png"):
         print(img)
         image = cv2.imread(img)
         img_gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
         ret, thresh = cv2.threshold(img_gray, 150, 255, cv2.THRESH_BINARY)
         contours, hierarchy = cv2.findContours(image=thresh, mode=cv2.RETR_LIST, method=cv2.CHAIN_APPROX_SIMPLE)
-        idx = {8,11}
+        idx = {3,6}
         images = []
         for q in idx:
             yMin = 9999999999
